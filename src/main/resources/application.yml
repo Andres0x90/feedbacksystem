@@ -3,9 +3,9 @@ spring:
     name: feedback-system
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/feedback_system_db
-    username: feedback_system_user
-    password: feedback_system_password
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/feedback_system_db}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASS}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
@@ -34,7 +34,7 @@ spring:
     schemas: public
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   error:
     include-message: always
     include-binding-errors: always
