@@ -1,0 +1,679 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "Feedback System API",
+    "description": "Colección completa de endpoints para el sistema de analítica de aprendizaje y retroalimentación personalizada del Tecnológico de Antioquia.\n\nBase URL: http://localhost:8080\n\nOrden de uso recomendado:\n1. Plantillas\n2. Rúbricas\n3. Actividades de Referencia\n4. Calificaciones de Referencia\n5. Feedback\n6. Perfiles Académicos\n7. Reportes\n8. Auditoría",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "rubricaId",
+      "value": "00000000-0000-0000-0000-000000000001",
+      "type": "string"
+    },
+    {
+      "key": "criterioId",
+      "value": "00000000-0000-0000-0000-000000000002",
+      "type": "string"
+    },
+    {
+      "key": "plantillaId",
+      "value": "00000000-0000-0000-0000-000000000003",
+      "type": "string"
+    },
+    {
+      "key": "actividadId",
+      "value": "00000000-0000-0000-0000-000000000004",
+      "type": "string"
+    },
+    {
+      "key": "calificacionId",
+      "value": "00000000-0000-0000-0000-000000000005",
+      "type": "string"
+    },
+    {
+      "key": "feedbackId",
+      "value": "00000000-0000-0000-0000-000000000006",
+      "type": "string"
+    },
+    {
+      "key": "referenciaEstudiante",
+      "value": "EST-2024-001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Rúbricas",
+      "description": "Gestión de rúbricas de evaluación y sus criterios. La suma de pesos de criterios debe ser 100.",
+      "item": [
+        {
+          "name": "Crear rúbrica",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rúbrica de Programación Orientada a Objetos\",\n  \"descripcion\": \"Evalúa los conocimientos fundamentales de POO en Java\",\n  \"criterios\": [\n    {\n      \"nombre\": \"Encapsulamiento\",\n      \"descripcion\": \"Uso correcto de modificadores de acceso y getters/setters\",\n      \"peso\": 30.00,\n      \"orden\": 1,\n      \"niveles\": [\n        {\n          \"nombre\": \"Excelente\",\n          \"descripcion\": \"Aplica encapsulamiento correctamente en todos los casos\",\n          \"puntajeMin\": 4.5,\n          \"puntajeMax\": 5.0\n        },\n        {\n          \"nombre\": \"Bueno\",\n          \"descripcion\": \"Aplica encapsulamiento en la mayoría de los casos\",\n          \"puntajeMin\": 3.5,\n          \"puntajeMax\": 4.4\n        },\n        {\n          \"nombre\": \"Básico\",\n          \"descripcion\": \"Aplica encapsulamiento en algunos casos\",\n          \"puntajeMin\": 2.5,\n          \"puntajeMax\": 3.4\n        },\n        {\n          \"nombre\": \"Insuficiente\",\n          \"descripcion\": \"No aplica encapsulamiento correctamente\",\n          \"puntajeMin\": 0.0,\n          \"puntajeMax\": 2.4\n        }\n      ]\n    },\n    {\n      \"nombre\": \"Herencia\",\n      \"descripcion\": \"Implementación y uso de jerarquías de clases\",\n      \"peso\": 35.00,\n      \"orden\": 2,\n      \"niveles\": [\n        {\n          \"nombre\": \"Excelente\",\n          \"descripcion\": \"Implementa herencia de forma avanzada con polimorfismo\",\n          \"puntajeMin\": 4.5,\n          \"puntajeMax\": 5.0\n        },\n        {\n          \"nombre\": \"Bueno\",\n          \"descripcion\": \"Implementa herencia correctamente\",\n          \"puntajeMin\": 3.5,\n          \"puntajeMax\": 4.4\n        },\n        {\n          \"nombre\": \"Básico\",\n          \"descripcion\": \"Comprende herencia pero con errores menores\",\n          \"puntajeMin\": 2.5,\n          \"puntajeMax\": 3.4\n        },\n        {\n          \"nombre\": \"Insuficiente\",\n          \"descripcion\": \"No comprende el concepto de herencia\",\n          \"puntajeMin\": 0.0,\n          \"puntajeMax\": 2.4\n        }\n      ]\n    },\n    {\n      \"nombre\": \"Polimorfismo\",\n      \"descripcion\": \"Uso de interfaces, clases abstractas y sobreescritura\",\n      \"peso\": 35.00,\n      \"orden\": 3,\n      \"niveles\": [\n        {\n          \"nombre\": \"Excelente\",\n          \"descripcion\": \"Domina polimorfismo en tiempo de compilación y ejecución\",\n          \"puntajeMin\": 4.5,\n          \"puntajeMax\": 5.0\n        },\n        {\n          \"nombre\": \"Bueno\",\n          \"descripcion\": \"Aplica polimorfismo correctamente\",\n          \"puntajeMin\": 3.5,\n          \"puntajeMax\": 4.4\n        },\n        {\n          \"nombre\": \"Básico\",\n          \"descripcion\": \"Comprende polimorfismo básico\",\n          \"puntajeMin\": 2.5,\n          \"puntajeMax\": 3.4\n        },\n        {\n          \"nombre\": \"Insuficiente\",\n          \"descripcion\": \"No aplica polimorfismo\",\n          \"puntajeMin\": 0.0,\n          \"puntajeMax\": 2.4\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas"]
+            },
+            "description": "Crea una nueva rúbrica con criterios y niveles de desempeño. La suma de pesos de criterios debe ser 100."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar rúbricas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas"]
+            },
+            "description": "Retorna todas las rúbricas registradas."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener rúbrica por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas/{{rubricaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas", "{{rubricaId}}"]
+            },
+            "description": "Retorna una rúbrica específica por su UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar rúbrica",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rúbrica de POO - Versión Actualizada\",\n  \"descripcion\": \"Evalúa conocimientos avanzados de POO en Java con patrones de diseño\",\n  \"activa\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas/{{rubricaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas", "{{rubricaId}}"]
+            },
+            "description": "Actualiza nombre, descripción y estado activa de la rúbrica."
+          },
+          "response": []
+        },
+        {
+          "name": "Crear nueva versión de rúbrica",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas/{{rubricaId}}/versiones",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas", "{{rubricaId}}", "versiones"]
+            },
+            "description": "Crea una copia de la rúbrica con la versión incrementada."
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar criterio a rúbrica",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Abstracción\",\n  \"descripcion\": \"Capacidad de modelar entidades del mundo real como clases\",\n  \"peso\": 20.00,\n  \"orden\": 4,\n  \"niveles\": [\n    {\n      \"nombre\": \"Excelente\",\n      \"descripcion\": \"Modela con precisión y claridad las entidades del dominio\",\n      \"puntajeMin\": 4.5,\n      \"puntajeMax\": 5.0\n    },\n    {\n      \"nombre\": \"Bueno\",\n      \"descripcion\": \"Modela correctamente con pequeñas imprecisiones\",\n      \"puntajeMin\": 3.5,\n      \"puntajeMax\": 4.4\n    },\n    {\n      \"nombre\": \"Básico\",\n      \"descripcion\": \"Modela con errores conceptuales menores\",\n      \"puntajeMin\": 2.5,\n      \"puntajeMax\": 3.4\n    },\n    {\n      \"nombre\": \"Insuficiente\",\n      \"descripcion\": \"No logra modelar las entidades correctamente\",\n      \"puntajeMin\": 0.0,\n      \"puntajeMax\": 2.4\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas/{{rubricaId}}/criterios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas", "{{rubricaId}}", "criterios"]
+            },
+            "description": "Agrega un nuevo criterio con sus niveles de desempeño a una rúbrica existente."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar criterios de rúbrica",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rubricas/{{rubricaId}}/criterios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rubricas", "{{rubricaId}}", "criterios"]
+            },
+            "description": "Retorna los criterios de una rúbrica ordenados por posición."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Plantillas de Retroalimentación",
+      "description": "Gestión de plantillas base para estructurar la retroalimentación.",
+      "item": [
+        {
+          "name": "Crear plantilla",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Plantilla Estándar de Retroalimentación\",\n  \"objetivo\": \"Proporcionar retroalimentación constructiva y motivadora a los estudiantes de ingeniería\",\n  \"contenidoBase\": \"Estimado/a estudiante:\\n\\nA continuación encontrará la retroalimentación detallada de su evaluación:\\n\\n[RESUMEN_GENERAL]\\n\\nFortalezas identificadas:\\n[FORTALEZAS]\\n\\nOportunidades de mejora:\\n[OPORTUNIDADES]\\n\\nRecomendaciones:\\n[RECOMENDACIONES]\\n\\nRecuerde que el proceso de aprendizaje es continuo. ¡Sigue adelante!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/plantillas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "plantillas"]
+            },
+            "description": "Crea una nueva plantilla de retroalimentación."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar plantillas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/plantillas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "plantillas"]
+            },
+            "description": "Retorna todas las plantillas registradas."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener plantilla por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/plantillas/{{plantillaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "plantillas", "{{plantillaId}}"]
+            },
+            "description": "Retorna una plantilla específica por su UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar plantilla",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Plantilla Estándar v2\",\n  \"objetivo\": \"Proporcionar retroalimentación constructiva, motivadora y personalizada\",\n  \"contenidoBase\": \"Estimado/a estudiante:\\n\\nA continuación encontrará la retroalimentación personalizada de su evaluación:\\n\\n[RESUMEN_GENERAL]\\n\\nAnálisis por criterio:\\n[CRITERIOS]\\n\\nPlan de mejora sugerido:\\n[PLAN_MEJORA]\\n\\n¡Felicitaciones por tu esfuerzo y dedicación!\",\n  \"activa\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/plantillas/{{plantillaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "plantillas", "{{plantillaId}}"]
+            },
+            "description": "Actualiza los datos de una plantilla existente."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Actividades Evaluativas de Referencia",
+      "description": "Gestión de actividades evaluativas asociadas a rúbricas.",
+      "item": [
+        {
+          "name": "Crear actividad evaluativa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rubricaId\": \"{{rubricaId}}\",\n  \"plantillaId\": \"{{plantillaId}}\",\n  \"titulo\": \"Parcial 1 - Programación Orientada a Objetos\",\n  \"descripcion\": \"Primer parcial del curso de POO. Implementación de un sistema de gestión de biblioteca usando los principios de OOP.\",\n  \"fecha\": \"2026-06-15\",\n  \"ponderacion\": 25.00\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/actividades-referencia",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "actividades-referencia"]
+            },
+            "description": "Crea una nueva actividad evaluativa de referencia asociada a una rúbrica."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar actividades evaluativas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/actividades-referencia",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "actividades-referencia"]
+            },
+            "description": "Retorna todas las actividades evaluativas registradas."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener actividad por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/actividades-referencia/{{actividadId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "actividades-referencia", "{{actividadId}}"]
+            },
+            "description": "Retorna una actividad evaluativa específica por su UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar actividad evaluativa",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plantillaId\": \"{{plantillaId}}\",\n  \"titulo\": \"Parcial 1 - POO (Actualizado)\",\n  \"descripcion\": \"Primer parcial del curso de POO. Incluye implementación con patrones de diseño básicos.\",\n  \"fecha\": \"2026-06-20\",\n  \"ponderacion\": 30.00,\n  \"estado\": \"ACTIVA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/actividades-referencia/{{actividadId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "actividades-referencia", "{{actividadId}}"]
+            },
+            "description": "Actualiza los datos de una actividad evaluativa."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Calificaciones de Referencia",
+      "description": "Registro de calificaciones numéricas por estudiante y actividad evaluativa.",
+      "item": [
+        {
+          "name": "Registrar calificación",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actividadEvaluativaId\": \"{{actividadId}}\",\n  \"referenciaEstudiante\": \"EST-2024-001\",\n  \"valorNumerico\": 3.8,\n  \"observacionGeneral\": \"El estudiante demuestra comprensión de los conceptos básicos de POO pero presenta dificultades con polimorfismo.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/calificaciones-referencia",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "calificaciones-referencia"]
+            },
+            "description": "Registra una calificación numérica para un estudiante en una actividad evaluativa. Valor entre 0 y 5."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener calificación por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/calificaciones-referencia/{{calificacionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "calificaciones-referencia", "{{calificacionId}}"]
+            },
+            "description": "Retorna una calificación específica por su UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar calificaciones por estudiante",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/calificaciones-referencia?referenciaEstudiante={{referenciaEstudiante}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "calificaciones-referencia"],
+              "query": [
+                {
+                  "key": "referenciaEstudiante",
+                  "value": "{{referenciaEstudiante}}",
+                  "description": "Identificador externo del estudiante (obligatorio para obtener resultados)"
+                }
+              ]
+            },
+            "description": "Filtra calificaciones por el identificador externo del estudiante."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. Feedback",
+      "description": "Gestión de retroalimentación personalizada por estudiante.",
+      "item": [
+        {
+          "name": "Crear feedback",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calificacionReferenciaId\": \"{{calificacionId}}\",\n  \"resumenGeneral\": \"El estudiante muestra un buen dominio de los conceptos de encapsulamiento y herencia. Se recomienda reforzar el polimorfismo y las interfaces para alcanzar un desempeño superior.\",\n  \"comentarios\": [\n    {\n      \"criterioId\": \"{{criterioId}}\",\n      \"comentario\": \"Aplica correctamente los modificadores de acceso en la mayoría de las clases del proyecto.\",\n      \"fortaleza\": \"Uso consistente de private para atributos y métodos de acceso bien definidos.\",\n      \"oportunidadMejora\": \"Revisar el uso de 'protected' en la jerarquía de clases para aprovechar mejor la herencia.\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feedback",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feedback"]
+            },
+            "description": "Crea retroalimentación para una calificación, incluyendo comentarios detallados por criterio."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener feedback por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feedback/{{feedbackId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feedback", "{{feedbackId}}"]
+            },
+            "description": "Retorna un feedback específico por su UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar feedback por estudiante",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feedback/estudiante/{{referenciaEstudiante}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feedback", "estudiante", "{{referenciaEstudiante}}"]
+            },
+            "description": "Retorna todo el feedback disponible para un identificador externo de estudiante."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar feedback por actividad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feedback/actividad/{{actividadId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feedback", "actividad", "{{actividadId}}"]
+            },
+            "description": "Retorna todos los feedbacks asociados a una actividad evaluativa específica."
+          },
+          "response": []
+        },
+        {
+          "name": "Publicar feedback",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feedback/{{feedbackId}}/publicar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feedback", "{{feedbackId}}", "publicar"]
+            },
+            "description": "Cambia el estado del feedback a PUBLICADO, haciéndolo visible para el estudiante."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6. Perfiles Académicos",
+      "description": "Consulta y recálculo de perfiles académicos básicos por estudiante.",
+      "item": [
+        {
+          "name": "Obtener perfil académico",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/perfiles/{{referenciaEstudiante}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "perfiles", "{{referenciaEstudiante}}"]
+            },
+            "description": "Retorna el perfil académico básico del estudiante identificado por referenciaEstudiante."
+          },
+          "response": []
+        },
+        {
+          "name": "Recalcular perfil académico",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/perfiles/{{referenciaEstudiante}}/recalcular",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "perfiles", "{{referenciaEstudiante}}", "recalcular"]
+            },
+            "description": "Recalcula fortalezas, brechas y tendencia a partir de las calificaciones y feedback existentes del estudiante."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener recomendaciones del estudiante",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/perfiles/{{referenciaEstudiante}}/recomendaciones",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "perfiles", "{{referenciaEstudiante}}", "recomendaciones"]
+            },
+            "description": "Retorna las recomendaciones activas generadas para el estudiante."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "7. Reportes Básicos",
+      "description": "Generación de reportes agregados para docentes y coordinación académica.",
+      "item": [
+        {
+          "name": "Reporte por actividad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reportes/actividad/{{actividadId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "reportes", "actividad", "{{actividadId}}"]
+            },
+            "description": "Genera estadísticas de calificaciones y feedback para una actividad evaluativa específica."
+          },
+          "response": []
+        },
+        {
+          "name": "Reporte de feedback general",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reportes/feedback",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "reportes", "feedback"]
+            },
+            "description": "Genera un resumen del estado de todos los feedbacks registrados en el sistema."
+          },
+          "response": []
+        },
+        {
+          "name": "Reporte para coordinación académica",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/reportes/coordinacion",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "reportes", "coordinacion"]
+            },
+            "description": "Genera indicadores globales: total de calificaciones, feedbacks y tasa de cobertura."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "8. Auditoría",
+      "description": "Registro de trazabilidad de cambios en el sistema.",
+      "item": [
+        {
+          "name": "Listar registros de auditoría (paginado)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auditoria?page=0&size=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auditoria"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "Número de página (desde 0)"
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "Cantidad de registros por página"
+                }
+              ]
+            },
+            "description": "Retorna todos los cambios registrados en el sistema, paginados y ordenados por fecha descendente."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar auditoría por entidad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auditoria/Rubrica/{{rubricaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auditoria", "Rubrica", "{{rubricaId}}"]
+            },
+            "description": "Retorna el historial de cambios de un registro específico. El parámetro 'entidad' puede ser: Rubrica, Feedback, PlantillaRetroalimentacion, ActividadEvaluativaReferencia, CalificacionReferencia, etc."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
